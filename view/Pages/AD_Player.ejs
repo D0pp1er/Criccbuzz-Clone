@@ -1,0 +1,208 @@
+<style>
+    .card-title1{
+        padding: 0.2% 2%;
+        background-color: #4be7cf;
+    }
+    .buttonpanel{
+        display: flex;
+    }
+    .btn{
+        margin: 2%;
+    }
+    .btn a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .btn a:hover{
+        /*background-color: #009270;*/
+        color: black;
+    }
+
+    .curr{
+        background-color: #b63c3c;
+    }
+    .active2{
+        /*background-color: gainsboro;*/
+        color: #d321e7;
+        font-weight: bold;
+    }
+    .Panel{
+        display: none;
+    }
+    .vis2{
+        display: block;
+    }
+</style>
+<%-include('../Partials/Homehead');%>
+<div class="card-title1">
+<h2>
+    Admin Panel
+</h2>
+</div>
+
+<div class="buttonpanel">
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo active2" id="x1"> Add Player</div></button>
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo" id="x2">Edit Player</div></button>
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo" id="x3">Add Team</div></button>
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo" id="x4">Edit Team</div></button>
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo" id="x5">Update Batting Score</div></button>
+    <button type="button" class="btn btn-outline-info"><div class="Pinfo" id="x6">Update Bowling Score</div></button>
+
+    <button type="button" class="btn btn-outline-success" > <a href="/home">Back To Home</a></button>
+
+
+</div>
+
+<div class="buttonpanel">
+    <div class="Panel vis2" id="y1">
+
+
+
+    </div>
+    <div class="Panel" id="y2">pp2</div>
+
+    <div class="Panel" id="y3">pp3</div>
+
+    <div class="Panel" id="y4">pp4</div>
+
+    <div class="Panel" id="y5">
+
+        <form >
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Match</label>
+                <input type="email" class="form-control" id="MID" placeholder="Give Match No" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Team</label>
+                <input type="email" class="form-control" id="TID" placeholder="Give Team ID" required >
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Batsman</label>
+                <input type="email" class="form-control" id="BTMID" placeholder="Give Batsman ID" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Innings</label>
+                <input type="email" class="form-control" id="INN" placeholder="Innings No"  required>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Runs</label>
+                <input type="email" class="form-control" id="R" placeholder="Runs Scored" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Balls</label>
+                <input type="email" class="form-control" id="B" placeholder="Balls faced"required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Sixes</label>
+                <input type="email" class="form-control" id="SIXES" placeholder="Number of Sixes"required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Fours</label>
+                <input type="email" class="form-control" id="FOURS" placeholder="Number of Sixes"required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Status</label>
+                <input type="email" class="form-control" id="STATUS" placeholder="Out or Not Out"required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Series</label>
+                <input type="email" class="form-control" id="SS" placeholder="Give series id"required>
+            </div>
+
+            <button type="button" class="btn btn-outline-info" onclick="BSCard()">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="Panel" id="y6">pp6</div>
+
+
+
+</div>
+
+<script>
+
+    var btny = document.getElementsByClassName("Pinfo");
+    var infoy=document.getElementsByClassName("Panel");
+    for (var i = 0; i < btny.length; i++) {
+        btny[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active2");
+            var c2=document.getElementsByClassName("vis2");
+            current[0].className = current[0].className.replace(" active2", "");
+            c2[0].className=c2[0].className.replace(" vis2", "");
+            this.className += " active2";
+
+            document.getElementById("y"+this.id.substring(1,2)).className += " vis2";
+        });
+    }
+</script>
+
+<script>
+    const BSCard =async ()=>{
+        let MID=document.getElementById("MID");
+        let TID=document.getElementById("TID");
+        let BTMID=document.getElementById("BTMID");
+        let INN=document.getElementById("INN");
+        let R=document.getElementById("R");
+        let B=document.getElementById("B");
+        let SIXES=document.getElementById("SIXES");
+        let FOURS=document.getElementById("FOURS");
+        let STATUS=document.getElementById("STATUS");
+        let SS=document.getElementById("SS");
+
+        if((MID.value===""||TID.value===""||BTMID.value===""||INN.value===""||R.value===""||B.value===""||SIXES.value===""||FOURS.value===""||STATUS.value===""||SS.value==="")){
+            window.alert("Give All Data");
+            // console.log("Hello xx");
+        }
+
+        else {
+            const data={
+                MID:MID.value,
+                TID:TID.value,
+                BTMID:BTMID.value,
+                INN:INN.value,
+                R:R.value,
+                B:B.value,
+                SIXES:SIXES.value,
+                FOURS:FOURS.value,
+                STATUS:STATUS.value,
+                SS:SS.value
+            }
+
+            try {
+
+                const response=await fetch("/AdminPanel/BTSS",
+                    {
+                        method:"POST",
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data),
+
+                    })
+
+                if(response.status==201){
+                    window.alert("Successful Update");
+                }
+                else {
+                    window.alert("Invalid Update");
+                }
+                window.open("/AdminPanel","_self");
+
+
+            }catch (e)
+            {
+                console.log(e);
+            }
+
+
+
+        }
+
+
+
+
+
+    }
+</script>

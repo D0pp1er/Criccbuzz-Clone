@@ -1,0 +1,87 @@
+<style>
+[class*="col"]
+{
+    padding: 1rem;
+    background-color: #009270 ;
+    border: 0px solid #fff;
+    color: #e9fff3;
+    text-align: center;
+    width: 30px;
+
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*float: inline-end;*/
+    /*display: flex;*/
+
+
+}
+[class*="bttn"]
+{
+    background-color: #009270 ;border:0px;font-size: 20px;color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+
+}
+#logocricbuzz
+{
+    height: 6vh;
+    text-decoration: none;
+
+    /*padding-right: 1%;*/
+}
+.bttn:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform-origin: center;
+    background-color: lawngreen;
+    text-decoration: white;
+    display: block;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: transform 0.5s ease-out;
+    color: white;
+}
+.bttn:hover:after{
+    font-size: 22px;
+    text-shadow: white;
+    transform: scaleX(1);
+    transform-origin: center;
+
+}
+.bttn:hover{
+    color: lawngreen;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+</style>
+<div class="container-fluid border">
+    <div class="row">
+
+<!--        <div class="col"><strong><i><a class="bttn" href="/">CRICCBUZZ</a></i></strong></div>-->
+
+
+<!--        <div class="col"><a   href="/home"><img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c170903/sabbir-rahman.jpg" id="logocricbuzz"></a></div>-->
+
+        <div class="col"><a   href="/home"><img src="/img/logo.png" id="logocricbuzz"></a></div>
+
+        <div class="col"><a class="bttn" href="/LiveScores" >Live Scores</a></div>
+
+        <div class="col"><a class="bttn" href="/Schedule" >Schedule</a></div>
+
+<!--        <div class="col"><a class="bttn" href="/rough/bal/sal" >Archives</a></div>-->
+
+        <div class="col"><a class="bttn" href="/Series">Series</a></div>
+
+        <div class="col"><a class="bttn" href="/Teams">Teams</a></div>
+
+        <div class="col"><a class="bttn" href="/Rankings">Rankings</a></div>
+
+        <div class="col"><a class="bttn" href="/Login">Log in</a></div>
+
+    </div>
+</div>

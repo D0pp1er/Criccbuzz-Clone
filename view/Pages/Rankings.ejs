@@ -1,0 +1,188 @@
+<!doctype html>
+
+
+<html>
+<head>
+    <%-include('../Partials/Homehead');%>
+
+    <style>
+        .Rankings_Header{
+            width: 100%;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .Rinfo_Header{
+            width: 100%;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #49f3b2;
+            text-align: center;
+            margin-bottom: 5px;
+            /*background-color: red;*/
+
+
+        }
+        .Rinfo{
+            font-size: 22px;
+            /*padding: 10px 410px 10px 410px;*/
+            padding: 0.1% 26.9%;
+            border: 0px;
+            display:none;
+
+        }
+        .RPosition{
+            width: 33%;
+            margin:0px 2px 0px 0px;
+            color: black;
+            background-color: #f3f5f3;
+        }
+
+        .RHead{
+            width: 67%;
+            color: black;
+            margin: 0px;
+            background-color: #f3f5f3;
+            cursor: pointer;
+
+        }
+
+        .RHead a{
+            text-decoration: none;
+            color: black;
+        }
+        .RHead a:hover{
+            text-decoration:underline ;
+            color: #14b3f3;
+        }
+        .RPositionH{
+            width: 33%;
+            background-color: #d1fcde;
+            color: #039d57;
+            margin:0px 2px 0px 0px;
+
+        }
+        .RHeadH{
+            width: 67%;
+            margin: 0px;
+            background-color:  #d1fcde;
+            color: #039d57;
+
+
+        }
+        .Rankings_header_elem{
+            cursor: pointer;
+            padding: 10px 80px 10px 80px;
+            background-color: #b4fa87;
+            color: #039d57;
+            border: 0px;
+        }
+        .active, .Rankings_header_elem:hover{
+            background-color: #d1f8dd;
+            color: black;
+
+        }
+
+        .vis {
+            display:block;
+        }
+
+    </style>
+
+    <%
+    CheckNULL = function (x)
+    {
+        // console.log('Hello ');
+        if(x==null)return '--';
+        else return x;
+    }
+    %>
+</head>
+<body>
+<header>
+    <%-include('../Partials/header');%>
+</header>
+
+
+
+    <div class="Rankings_Header">
+        <button id ="b1" class="Rankings_header_elem active" >Teams</button>
+        <button id ="b2" class="Rankings_header_elem">Batting</button>
+        <button id ="b3" class="Rankings_header_elem">Bowling</button>
+    </div>
+
+        <div id ="i1" class="Rinfo vis">
+            <div class="Rinfo_Header">
+                <div class="RPositionH">Position</div>
+                <div class="RHeadH">Team</div>
+            </div>
+            <%for(let i=0;i<teams.length;i++){%>
+            <div class="Rinfo_Header">
+
+                <div class="RPosition"><%=i+1%></div>
+                <div class="RHead" ><a href="/Teams/<%=teams[i]%>"><%=teams[i]%></a></div>
+
+<!--                <div class="RPosition">1</div><div class="RHead">Bangladesh</div>-->
+
+            </div>
+            <%}%>
+        </div>
+        <div id ="i2" class="Rinfo">
+            <div class="Rinfo_Header">
+                <div class="RPositionH">Position</div>
+                <div class="RHeadH">Batsman</div>
+            </div>
+            <%for(let i=0;i<Batsman.rows.length;i++){%>
+            <div class="Rinfo_Header">
+
+                <div class="RPosition"><%=i+1%></div>
+                <div class="RHead" ><a href="/Players/<%=Batsman.rows[i].FN%>"><%=Batsman.rows[i].FN%></a></div>
+
+                <!--                <div class="RPosition">1</div><div class="RHead">Bangladesh</div>-->
+
+            </div>
+            <%}%>
+
+        </div>
+        <div id ="i3" class="Rinfo">
+
+            <div class="Rinfo_Header">
+                <div class="RPositionH">Position</div>
+                <div class="RHeadH">Bowler</div>
+            </div>
+            <%for(let i=0;i<Bowler.rows.length;i++){%>
+            <div class="Rinfo_Header">
+
+                <div class="RPosition"><%=i+1%></div>
+                <div class="RHead" ><a href="/Players/<%=Bowler.rows[i].FN%>"><%=Bowler.rows[i].FN%></a></div>
+
+                <!--                <div class="RPosition">1</div><div class="RHead">Bangladesh</div>-->
+
+            </div>
+            <%}%>
+        </div>
+
+<script>
+
+    var btns = document.getElementsByClassName("Rankings_header_elem");
+    var infos=document.getElementsByClassName("Rinfo");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            var c2=document.getElementsByClassName("vis");
+            current[0].className = current[0].className.replace(" active", "");
+            c2[0].className=c2[0].className.replace(" vis", "");
+            this.className += " active";
+
+            document.getElementById("i"+this.id.substring(1,2)).className += " vis";
+        });
+    }
+</script>
+
+</body>
+</html>

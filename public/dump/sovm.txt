@@ -1,0 +1,123 @@
+<!--    <% sovm.forEach(function (sovm){%>-->
+
+<!--    <a href="">> <%=sovm.name%></a><%});%>-->
+
+
+<!--    <a href="#">>  England vs South Africa</a>-->
+<!--    <a href="#">>  Sri Lanka vs Pakistan</a>-->
+<!--    <a href="#">>  Ireland Tri-Nation(W)</a>-->
+<!--    <a href="#">>  West Indies vs India</a>-->
+<!--    <a href="#">>  Zimbabwe vs Bangladesh</a>-->
+<!--    <a href="#">>  Scotland vs New Zealand</a>-->
+<!--    <a href="#">>  County Div 1</a>-->
+<!--    <a href="#">>  World Test Championship</a>-->
+
+<!--<div class="vertical-menu" >-->
+<!--    <a href="#" class="active" id="keyseries">Key Series</a>-->
+<!--    <a href="#">>  England vs South Africa</a>-->
+<!--    <a href="#">>  Sri Lanka vs Pakistan</a>-->
+<!--    <a href="#">>  Ireland Tri-Nation(W)</a>-->
+<!--    <a href="#">>  West Indies vs India</a>-->
+<!--    <a href="#">>  Zimbabwe vs Bangladesh</a>-->
+<!--    <a href="#">>  Scotland vs New Zealand</a>-->
+<!--    <a href="#">>  County Div 1</a>-->
+<!--    <a href="#">>  World Test Championship</a>-->
+<!--    <a href="#">>  Women's Championship</a>-->
+
+<!--</div>-->
+
+
+        // var temp=res.temp;
+        // console.log(temp);
+        // var sovm=[{name:'England vs South Africa'},
+        //     {name: 'Sri Lanka vs Pakistan'},
+        //     {name:'Ireland Tri-Nation(W)'},
+        //     {name:'West Indies vs India'},
+        //     {name:'Zimbabwe vs Bangladesh'},
+        //     {name:'Scotland vs New Zealand'}
+        //
+        // ];
+        // // var tagline="Hello series!!";
+        //
+        //
+        //
+        //
+        // res.render('../view/Pages/home',{
+        //     sovm:sovm,
+        //     temp:temp
+        //     });
+
+        // getdata(req,res);
+
+                // res.temp=temp;
+                // console.log("gandu "+res.temp);
+
+                // sovm:sovm,
+
+
+                       //var temp = result.rows[0].FIRST_NAME+" "+result.rows[0].LAST_NAME;
+                        // temp[0]=x;
+
+                        //console.log(temp);
+                        // var sovm=[{name:'England vs South Africa'},
+                        //     {name: 'Sri Lanka vs Pakistan'},
+                        //     {name:'Ireland Tri-Nation(W)'},
+                        //     {name:'West Indies vs India'},
+                        //     {name:'Zimbabwe vs Bangladesh'},
+                        //     {name:'Scotland vs New Zealand'}
+                        //
+                        // ];
+                        // var tagline="Hello series!!";
+
+
+        <!--<div class="grid-container-1">-->
+        <!--    <div class="gc1item1">Series</div>-->
+        <!--    <div class="gc1item2">Team 1</div>-->
+        <!--    <div class="gc1item3">Team 2</div>-->
+        <!--    <div class="gc1item4">Match no</div>-->
+        <!--    <div class="gc1item5">Type</div>-->
+        <!--    <div class="gc1item6">Venue</div>-->
+        <!--    <div class="gc1item7">Score 1</div>-->
+        <!--    <div class="gc1item8">Score 2</div>-->
+        <!--</div>-->
+        <!--<div class="grid-container-1">-->
+        <!--    <div class="gc1item1">Series</div>-->
+        <!--    <div class="gc1item2">Team 1</div>-->
+        <!--    <div class="gc1item3">Team 2</div>-->
+        <!--    <div class="gc1item4">Match no</div>-->
+        <!--    <div class="gc1item5">Type</div>-->
+        <!--    <div class="gc1item6">Venue</div>-->
+        <!--    <div class="gc1item7">Score 1</div>-->
+        <!--    <div class="gc1item8">Score 2</div>-->
+        <!--</div>-->
+
+
+        <!--    .gc1item1 { grid-area: series; }-->
+        <!--    .gc1item2 { grid-area: T1; }-->
+        <!--    .gc1item3 { grid-area: T2; }-->
+        <!--    .gc1item4 { grid-area: M; }-->
+        <!--    .gc1item5 { grid-area: Type; }-->
+        <!--    .gc1item6 { grid-area: Venue; }-->
+        <!--    .gc1item7 { grid-area: S1; }-->
+        <!--    .gc1item8 { grid-area: S2; }-->
+
+        <!--    .grid-container-1 {-->
+        <!--        display: grid;-->
+        <!--        grid-template-areas:-->
+        <!--    'series series series series M Type'-->
+        <!--    'series series series series Venue Venue'-->
+        <!--    'T1 T1 T1 T1 S1 S1'-->
+        <!--    'T2 T2 T2 T2 S2 S2';-->
+        <!--        gap: 2px;-->
+        <!--        background-color: #04AA6D;-->
+        <!--        padding: 2px ;-->
+        <!--        margin-bottom: 15px;-->
+        <!--        cursor: pointer;-->
+        <!--    }-->
+
+        <!--    .grid-container-1 > div {-->
+        <!--        background-color: #f6fff9;-->
+        <!--        text-align: left;-->
+        <!--        padding: 5px 0px 5px 15px;-->
+        <!--        font-size: 20px;-->
+        <!--    }-->

@@ -1,0 +1,108 @@
+<style>
+
+    .match-card {
+        width: 100%;
+        transition: 0.5s;
+        /*background-color: #dcffdc;*/
+        /*padding-bottom: 2px;*/
+        /*padding-left:20px;*/
+    }
+    .match-card:hover{
+        background-color: #97ff97;
+        padding-left: 7px;
+        padding-bottom: 7px;
+        /*padding-top: 7px;*/
+        /*transition: 0.5s;*/
+        transform-style: revert;
+    }
+
+    .match-details {
+        background-color: #dcffdc;
+        padding-left: 20px;
+        color: #474945;
+        cursor: pointer;
+    }
+    .team-container {
+        /*background-color: blue;*/
+        /*cursor: pointer;*/
+    }
+    .single-team {
+        background-color:#dcffdc ;
+        padding-left: 20px;
+        /*cursor: pointer;*/
+    }
+    .team-name {
+        display: inline-block;
+        width: 49%;
+        cursor: pointer;
+        /*background-color: blue;*/
+    }
+    .team-score {
+        display: inline-block;
+        width: 50%;
+        /*background-color: red;*/
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    .result-details{
+        text-align: center;
+        background-color: #dcffdc;
+    }
+    .Error_Message{
+        text-align: center;
+        padding: 250px;
+        color: #fc6363;
+    }
+
+    .match-card a{
+        text-decoration: none;
+        color:black ;
+    }
+
+</style>
+<%
+    CheckNULL = function (x)
+    {
+        // console.log('Hello ');
+        if(x==null)return '--';
+        else return x;
+    }
+%>
+
+<%if(matchdata.length){%>
+<%for(const sub of matchdata){%>
+<b>
+<div class="match-card">
+    <a href="/ScoreCard/<%=sub[4]%>/<%=sub[0].substring(0,1)%>">
+    <div class="match-details">
+        <%=sub[0]%> <%=sub[1]%>, <%=sub[2]%>, <%=sub[3]%>, <%=sub[4]%>
+    </div>
+    <div class="team-container">
+        <div class="single-team">
+            <div class="team-name"> <%=sub[5]%> </div>
+            <div class="team-score"> <%=CheckNULL(Math.round(sub[7]*100/100))%>/<%=CheckNULL(Math.round(sub[8]*100/100))%> <%=CheckNULL(Math.round(sub[9]*100/100))%> Overs</div>
+
+
+<!--            <p><%=CheckNULL(8)%></p>-->
+
+
+        </div>
+        <div class="single-team">
+            <div class="team-name"> <%=sub[6]%> </div>
+            <div class="team-score"> <%=CheckNULL(Math.round(sub[10]*100/100))%>/<%=CheckNULL(Math.round(sub[11]*100/100))%> <%=CheckNULL(Math.round(sub[12]*100/100))%> Overs</div>
+        </div>
+    </div>
+    <div class="result-details" padding-left=20px> <%=sub[13]%> </div>
+    </a>
+</div>
+
+</b>
+<%}%>
+<%}else{%>
+
+    <div class="Error_Message"><h2>Sorry, No Matches Available</h2></div>
+
+<%}%>
+

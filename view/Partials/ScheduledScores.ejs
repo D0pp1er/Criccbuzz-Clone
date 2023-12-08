@@ -1,0 +1,95 @@
+<style>
+
+    .match-card {
+        /*width: 100%;*/
+        /*background-color: #dcffdc;*/
+        /*padding-bottom: 2px;*/
+        /*padding-left:20px;*/
+        margin: 0% 6%;transition: 0.5s;
+
+    }
+    .match-card:hover{
+        background-color: #97ff97;
+        padding-left: 7px;
+        padding-bottom: 7px;
+        /*padding-top: 7px;*/
+
+        transform-style: revert;
+    }
+
+    .match-details {
+        background-color: #dcffdc;
+        padding-left: 100px;
+        color: #474945;
+        cursor: pointer;
+    }
+    .team-container {
+        /*background-color: blue;*/
+        /*cursor: pointer;*/
+    }
+    .single-team {
+        background-color:#dcffdc ;
+        padding-left: 100px;
+        /*cursor: pointer;*/
+    }
+    .team-name {
+        display: inline-block;
+        width: 49%;
+        cursor: pointer;
+        /*background-color: blue;*/
+    }
+    .team-score {
+        display: inline-block;
+        width: 50%;
+        /*background-color: red;*/
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    .result-details{
+        text-align: center;
+        background-color: #dcffdc;
+    }
+    .Error_Message{
+        text-align: center;
+        padding: 250px;
+        color: #fc6363;
+    }
+
+    .tab {
+        display: inline-block;
+        margin-left: 100px;
+    }
+
+    .match-card a{
+        text-decoration: none;
+        color:black ;
+    }
+
+</style>
+
+<!--input ScheduledMatchdata from schedule.js-->
+
+<%if(ScheduledMatchdata.length){%>
+<%for(const sub of ScheduledMatchdata){%>
+<b>
+    <div class="match-card">
+        <a href="/ScoreCard/<%=sub[4]%>/<%=sub[0].substring(0,1)%>">
+        <div class="match-details">
+            <%=sub[0]%> <%=sub[1]%>, <%=sub[2]%>, <%=sub[3]%>, <%=sub[4]%><span class="tab"></span><%=sub[7]%>
+        </div>
+        <div class="team-container">
+            <div class="single-team">
+                <div class="team-name"> <%=sub[5]%>  <span class="tab"></span>vs <span class="tab"></span> <%=sub[6]%> </div>
+            </div>
+        </div>
+        </a>
+    </div>
+</b>
+<%}%>
+<%}else{%>
+
+    <div class="Error_Message"><h2>Sorry, No Upcoming Matches </h2></div>
+
+<%}%>

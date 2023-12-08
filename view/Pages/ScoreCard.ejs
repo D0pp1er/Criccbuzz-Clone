@@ -1,0 +1,238 @@
+<!doctype html>
+<style>
+.Wrapper{
+    background-color: #efefef;
+    width: 100%;
+}
+
+.ScoreCard{
+    /*width: 80%;*/
+    margin-left: 12%;
+    margin-right: 12%;
+    padding: 8px;
+    background-color: #ffffff;
+    alignment: center;
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 200px;
+}
+.InningsHeader{
+    background-color: #474945;
+    color: white;
+    padding: 1%;
+}
+
+.CS_Header{
+    /*background-color: #dcdcdc;*/
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.CSH_Elem{
+    min-width: 15%;
+    padding: 1%;
+    background-color: #dcdcdc;
+    text-align: center;
+
+}
+.CSH_Elem1 a{
+    text-decoration: none;
+    transition: 0.4s;
+    color: black;
+    font-weight:normal;
+}
+
+.CSH_Elem1 a:hover{
+    text-decoration: underline;
+}
+
+.CSH_Elem1{
+    min-width: 15%;
+    padding: 0.3%;
+    text-align: center;
+}
+</style>
+
+<html>
+<head>
+    <%-include('../Partials/Homehead');%>
+</head>
+<body>
+<header>
+    <%-include('../Partials/header');%>
+</header>
+<!--<h2><%=temp%></h2>-->
+<!--<p><%=MID%></p>-->
+<div class="Wrapper">
+    <div class="ScoreCard"><b>
+            <%=Summary.rows[0].MR%></b>
+        <p></p>
+        <div class="InningsHeader">
+            <%=Summary.rows[0].T1N%> Innings<span class="tab"></span><span class="tab"></span><span class="tab"></span><span class="tab"></span><%=Summary.rows[0].T1S%> - <%=Summary.rows[0].T1W%> ( <%=Summary.rows[0].T1O%> Ov )
+        </div>
+
+        <div class="CS_Header">
+            <div class="CSH_Elem">Batter</div>
+            <div class="CSH_Elem"></div>
+            <div class="CSH_Elem">Runs</div>
+            <div class="CSH_Elem">Bowls</div>
+            <div class="CSH_Elem">4s</div>
+            <div class="CSH_Elem">6s</div>
+            <div class="CSH_Elem">SR</div>
+        </div>
+        
+        <%for(let i=0;i<BS1.rows.length;i++){%>
+            <div class="CS_Header">
+                <div class="CSH_Elem1"><a href="/Players/<%=BS1.rows[i].FN%>"><%=BS1.rows[i].FN%></a></div>
+                <div class="CSH_Elem1"></div>
+                <div class="CSH_Elem1"><%=BS1.rows[i].R%></div>
+                <div class="CSH_Elem1"><%=BS1.rows[i].B%></div>
+                <div class="CSH_Elem1"><%=BS1.rows[i].FOURS%></div>
+                <div class="CSH_Elem1"><%=BS1.rows[i].SIXES%></div>
+                <div class="CSH_Elem1"><%=Math.round(BS1.rows[i].SR*100)/100%></div>
+            </div>
+        <hr>
+        <%}%>
+        <div class="CS_Header">
+            <div class="CSH_Elem1">Extras</div>
+            <div class="CSH_Elem1"></div>
+            <div class="CSH_Elem1"><%=Summary.rows[0].T1E%></div>
+        </div>
+        <P></P>
+        <P></P>
+        <div class="CS_Header">
+            <div class="CSH_Elem1">Total</div>
+            <div class="CSH_Elem1"></div>
+            <div class="CSH_Elem1"><%=Summary.rows[0].T1S%> ( <%=Summary.rows[0].T1W%> wkts , <%=Summary.rows[0].T1O%> Ov)</div>
+        </div>
+        <P></P>
+        <div class="CS_Header">
+            <div class="CSH_Elem1">Did not Bat</div>
+            <div class="CSH_Elem1"></div>
+            <div class="CSH_Elem1">
+                <%for(let i=0;i<NB1.rows.length;i++){%>
+                <a href="/Players/<%=NB1.rows[i].FN%>"><%=NB1.rows[i].FN%></a>
+                <%if(NB1.rows.length-1!=i){%>
+                    ,
+                <%}%>
+                <%}%>
+            </div>
+        </div>
+        <P></P>
+        <div class="CS_Header">
+            <div class="CSH_Elem">Bowler</div>
+            <div class="CSH_Elem"></div>
+            <div class="CSH_Elem">Overs</div>
+            <div class="CSH_Elem">Maidens</div>
+            <div class="CSH_Elem">Runs</div>
+            <div class="CSH_Elem">Wkts</div>
+            <div class="CSH_Elem">Eco</div>
+        </div>
+
+        <%for(let i=0;i<BWS1.rows.length;i++){%>
+            <div class="CS_Header">
+                <div class="CSH_Elem1"><a href="/Players/<%=BWS1.rows[i].FN%>"><%=BWS1.rows[i].FN%></a></div>
+                <div class="CSH_Elem1"></div>
+                <div class="CSH_Elem1"><%=Math.round(BWS1.rows[i].O*10)/10%></div>
+                <div class="CSH_Elem1"><%=BWS1.rows[i].M%></div>
+                <div class="CSH_Elem1"><%=BWS1.rows[i].R%></div>
+                <div class="CSH_Elem1"><%=BWS1.rows[i].W%></div>
+                <div class="CSH_Elem1"><%=Math.round(BWS1.rows[i].ECO*100)/100%></div>
+            </div>
+            <hr>
+        <%}%>
+
+
+
+    <p></p>
+    <div class="InningsHeader">
+        <%=Summary.rows[0].T2N%> Innings<span class="tab"></span><span class="tab"></span><span class="tab"></span><span class="tab"></span><%=Summary.rows[0].T2S%> - <%=Summary.rows[0].T2W%> ( <%=Summary.rows[0].T2O%> Ov )
+    </div>
+
+    <div class="CS_Header">
+        <div class="CSH_Elem">Batter</div>
+        <div class="CSH_Elem"></div>
+        <div class="CSH_Elem">Runs</div>
+        <div class="CSH_Elem">Bowls</div>
+        <div class="CSH_Elem">4s</div>
+        <div class="CSH_Elem">6s</div>
+        <div class="CSH_Elem">SR</div>
+    </div>
+
+    <%for(let i=0;i<BS2.rows.length;i++){%>
+        <div class="CS_Header">
+            <div class="CSH_Elem1"><a href="/Players/<%=BS2.rows[i].FN%>"><%=BS2.rows[i].FN%></a></div>
+            <div class="CSH_Elem1"></div>
+            <div class="CSH_Elem1"><%=BS2.rows[i].R%></div>
+            <div class="CSH_Elem1"><%=BS2.rows[i].B%></div>
+            <div class="CSH_Elem1"><%=BS2.rows[i].FOURS%></div>
+            <div class="CSH_Elem1"><%=BS2.rows[i].SIXES%></div>
+            <div class="CSH_Elem1"><%=Math.round(BS2.rows[i].SR*100)/100%></div>
+        </div>
+        <hr>
+    <%}%>
+    <div class="CS_Header">
+        <div class="CSH_Elem1">Extras</div>
+        <div class="CSH_Elem1"></div>
+        <div class="CSH_Elem1"><%=Summary.rows[0].T2E%></div>
+    </div>
+    <P></P>
+    <div class="CS_Header">
+        <div class="CSH_Elem1">Total</div>
+        <div class="CSH_Elem1"></div>
+        <div class="CSH_Elem1"><%=Summary.rows[0].T2S%> ( <%=Summary.rows[0].T2W%> wkts , <%=Summary.rows[0].T2O%> Ov)</div>
+    </div>
+    <P></P>
+    <div class="CS_Header">
+        <div class="CSH_Elem1">Did not Bat</div>
+        <div class="CSH_Elem1"></div>
+        <div class="CSH_Elem1">
+
+            <%for(let i=0;i<NB2.rows.length;i++){%>
+            <a href="/Players/<%=NB2.rows[i].FN%>"><%=NB2.rows[i].FN%></a>
+            <%if(NB2.rows.length-1!=i){%>
+                 ,
+            <%}%>
+            <%}%>
+        </div>
+    </div>
+    <P></P>
+
+    <div class="CS_Header">
+        <div class="CSH_Elem">Bowler</div>
+        <div class="CSH_Elem"></div>
+        <div class="CSH_Elem">Overs</div>
+        <div class="CSH_Elem">Maidens</div>
+        <div class="CSH_Elem">Runs</div>
+        <div class="CSH_Elem">Wkts</div>
+        <div class="CSH_Elem">Eco</div>
+    </div>
+
+    <%for(let i=0;i<BWS2.rows.length;i++){%>
+        <div class="CS_Header">
+            <div class="CSH_Elem1"><a href="/Players/<%=BWS2.rows[i].FN%>"><%=BWS2.rows[i].FN%></a></div>
+            <div class="CSH_Elem1"></div>
+            <div class="CSH_Elem1"><%=Math.round(BWS2.rows[i].O*10)/10%></div>
+            <div class="CSH_Elem1"><%=BWS2.rows[i].M%></div>
+            <div class="CSH_Elem1"><%=BWS2.rows[i].R%></div>
+            <div class="CSH_Elem1"><%=BWS2.rows[i].W%></div>
+            <div class="CSH_Elem1"><%=Math.round(BWS2.rows[i].ECO*100)/100%></div>
+        </div>
+
+
+        <hr>
+    <%}%>
+
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>

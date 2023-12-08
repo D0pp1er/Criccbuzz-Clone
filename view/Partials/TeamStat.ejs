@@ -1,0 +1,422 @@
+<style>
+    .Menubar1 {
+        width: 25%; /* Set a width if you like */
+        /*left: 170px;*/
+        /*position: absolute;*/
+        /*display: block;*/
+        font-size: 16px;
+        /*padding: 12px;*/
+    }
+
+    .MH{
+        background-color: #2eb27f;
+        padding: 5px 15px;
+        color: white;
+    }
+
+    .Minfo
+    {
+        padding: 5px 15px;
+        background-color: white;
+        border-bottom:  1px solid black;
+        transition: .3s;
+    }
+
+    .active1,.Minfo:hover{
+        background-color: #e7e7e7;
+        cursor: pointer;
+    }
+
+
+    .TS_wrapper{
+        width: 100%;
+        display: flex;
+    }
+    .TS_info{
+        width: 75%;
+        font-size: 14px;
+        font-weight: bold;
+        display: none;
+        padding-left: 1%;
+    }
+    .vis1{
+        display: block;
+    }
+
+    .TSI{
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .TSIH{
+        background-color:gainsboro ;
+        padding: 1%;
+        width: 15%;
+        text-align: center;
+    }
+
+    .TSIE{
+        background-color: #ffffff;
+        padding: 1%;
+        width: 15%;
+        text-align: center;
+    }
+
+    .TSIE a{
+        text-decoration: none;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .TSIE a:hover{
+        text-decoration: underline;
+        color: #1288fd;
+    }
+
+    .N{
+        width: 200px;
+    }
+
+
+</style>
+
+<div class="TS_wrapper">
+
+
+    <div class="Menubar1">
+        <div class="MH">Batting</div>
+        <div class="Minfo active1" id="T1">Most runs</div>
+        <div class="Minfo" id="T2">Highest Scores</div>
+        <div class="Minfo" id="T3">Best Batting Average</div>
+        <div class="Minfo" id="T4">Best Batting Strike Rate</div>
+        <div class="Minfo" id="T5">Most Hundreds</div>
+        <div class="Minfo" id="T6">Most Fifties</div>
+        <div class="Minfo" id="T7">Most Fours</div>
+        <div class="Minfo" id="T8">Most Sixes</div>
+        <p></p>
+        <div class="MH">Bowling</div>
+        <div class="Minfo" id="T9">Most wickets</div>
+        <div class="Minfo" id="T10">Best Bowling Average</div>
+        <div class="Minfo" id="T11">Most 5 Wickets Haul</div>
+        <div class="Minfo" id="T12">Best Economy</div>
+        <div class="Minfo" id="T13">Best Bowling Strike Rate</div>
+
+    </div>
+<!--    show stat-->
+
+
+<!--    mOST RUNS-->
+    <div class="TS_info vis1" id="H1">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">AVG </div>
+            <div class="TSIH">SR </div>
+            <div class="TSIH">4S </div>
+            <div class="TSIH">6S </div>
+        </div>
+
+        <%for(let i=0;i<S1.rows.length;i++){%>
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S1.rows[i].FN%>"><%=S1.rows[i].FN%> </a></div>
+            <div class="TSIE"><%=S1.rows[i].M%> </div>
+            <div class="TSIE"><%=S1.rows[i].INN%> </div>
+            <div class="TSIE"><%=S1.rows[i].R%> </div>
+            <div class="TSIE"><%=Math.round(S1.rows[i].AVG*100)/100%> </div>
+            <div class="TSIE"><%=Math.round(S1.rows[i].SR*100)/100%> </div>
+            <div class="TSIE"><%=S1.rows[i].FOURS%> </div>
+            <div class="TSIE"><%=S1.rows[i].SIXES%> </div>
+        </div>
+        <%}%>
+    </div>
+
+<!--    HIGHEST SCORE-->
+    <div class="TS_info" id="H2">
+        <div class="TSI">
+            <div class="TSIH N">BATSMEN</div>
+            <div class="TSIH"> </div>
+            <div class="TSIH">RUNS</div>
+        </div>
+        <%for(let i=0;i<S2.rows.length;i++){%>
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S2.rows[i].FN%>"><%=S2.rows[i].FN%></a></div>
+            <div class="TSIE"> </div>
+            <div class="TSIE"><%=S2.rows[i].HS%> </div>
+        </div><%}%>
+    </div>
+
+
+<!--    BEST BATTING AVG-->
+    <div class="TS_info" id="H3">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH"> </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">AVG </div>
+            <div class="TSIH">NOT OUTS </div>
+        </div>
+        <%for(let i=0;i<S3.rows.length;i++){%>
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S3.rows[i].FN%>"><%=S3.rows[i].FN%></a></div>
+            <div class="TSIE"> </div>
+            <div class="TSIE"><%=S3.rows[i].M%> </div>
+            <div class="TSIE"><%=S3.rows[i].INN%></div>
+            <div class="TSIE"><%=S3.rows[i].R%></div>
+            <div class="TSIE"><%=Math.round(S3.rows[i].AVG*100)/100%></div>
+            <div class="TSIE"><%=S3.rows[i].NO%></div>
+        </div><%}%>
+    </div>
+
+<!--    BEST BATTING STRIKE RATE-->
+    <div class="TS_info" id="H4">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">AVG </div>
+            <div class="TSIH">SR </div>
+        </div>
+
+        <%for(let i=0;i<S4.rows.length;i++){%>
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S4.rows[i].FN%>"><%=S4.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S4.rows[i].M%></div>
+            <div class="TSIE"><%=S4.rows[i].INN%></div>
+            <div class="TSIE"><%=S4.rows[i].R%></div>
+            <div class="TSIE"><%=Math.round(S4.rows[i].AVG*100)/100%></div>
+            <div class="TSIE"><%=Math.round(S4.rows[i].SR*100)/100%></div>
+        </div>
+        <%}%>
+    </div>
+
+
+<!--    MOST HUNDREDS-->
+    <div class="TS_info" id="H5">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">H.S </div>
+            <div class="TSIH">100S </div>
+        </div>
+        <%for(let i=0;i<S5.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S5.rows[i].FN%>"><%=S5.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S5.rows[i].M%></div>
+            <div class="TSIE"><%=S5.rows[i].INN%> </div>
+            <div class="TSIE"><%=S5.rows[i].R%></div>
+            <div class="TSIE"><%=S5.rows[i].HS%></div>
+            <div class="TSIE"><%=S5.rows[i].HUNDREDS%> </div>
+        </div><%}%>
+
+    </div>
+
+<!--    MOST FIFTIES-->
+    <div class="TS_info" id="H6">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">H.S </div>
+            <div class="TSIH">50S </div>
+        </div>
+        <%for(let i=0;i<S6.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S6.rows[i].FN%>"><%=S6.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S6.rows[i].M%></div>
+            <div class="TSIE"><%=S6.rows[i].INN%></div>
+            <div class="TSIE"><%=S6.rows[i].R%></div>
+            <div class="TSIE"><%=S6.rows[i].HS%></div>
+            <div class="TSIE"><%=S6.rows[i].FIFTIES%></div>
+        </div><%}%>
+    </div>
+
+<!--    MOST FOURS-->
+    <div class="TS_info" id="H7">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">4S </div>
+        </div>
+        <%for(let i=0;i<S7.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S7.rows[i].FN%>"><%=S7.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S7.rows[i].M%></div>
+            <div class="TSIE"><%=S7.rows[i].INN%></div>
+            <div class="TSIE"><%=S7.rows[i].R%></div>
+            <div class="TSIE"><%=S7.rows[i].FOURS%></div>
+        </div><%}%>
+    </div>
+
+
+    <!--    MOST SIXES-->
+    <div class="TS_info" id="H8">
+        <div class="TSI">
+            <div class="TSIH N">PLAYER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">INNS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">6S </div>
+        </div>
+        <%for(let i=0;i<S8.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S8.rows[i].FN%>"><%=S8.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S8.rows[i].M%></div>
+            <div class="TSIE"><%=S8.rows[i].INN%></div>
+            <div class="TSIE"><%=S8.rows[i].R%></div>
+            <div class="TSIE"><%=S8.rows[i].SIXES%></div>
+        </div><%}%>
+    </div>
+
+    <div class="TS_info" id="H9">
+        <div class="TSI">
+            <div class="TSIH N">BOWLER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">BALLS </div>
+            <div class="TSIH">WKTS </div>
+            <div class="TSIH">AVG </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH"> 5-FERS</div>
+
+
+        </div>
+        <%for(let i=0;i<S9.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S9.rows[i].FN%>"><%=S9.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S9.rows[i].MT%></div>
+            <div class="TSIE"><%=S9.rows[i].BB%></div>
+            <div class="TSIE"><%=S9.rows[i].WKT%></div>
+            <div class="TSIE"><%=Math.round(S9.rows[i].AVG*100)/100%></div>
+            <div class="TSIE"><%=S9.rows[i].RC%></div>
+            <div class="TSIE"><%=S9.rows[i].FIFER%></div>
+        </div><%}%>
+    </div>
+
+    <div class="TS_info" id="H10">
+        <div class="TSI">
+            <div class="TSIH N">BOWLER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">BALLS </div>
+            <div class="TSIH">WKTS </div>
+            <div class="TSIH">AVG </div>
+
+
+        </div>
+        <%for(let i=0;i<S10.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S10.rows[i].FN%>"><%=S10.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S10.rows[i].MT%></div>
+            <div class="TSIE"><%=S10.rows[i].BB%></div>
+            <div class="TSIE"><%=S10.rows[i].WKT%></div>
+            <div class="TSIE"><%=Math.round(S10.rows[i].AVG*100)/100%></div>
+        </div><%}%>
+    </div>
+
+    <div class="TS_info" id="H11">
+        <div class="TSI">
+            <div class="TSIH N">BOWLER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">BALLS </div>
+            <div class="TSIH">RUNS </div>
+            <div class="TSIH">WKTS </div>
+            <div class="TSIH">5-FERS </div>
+
+
+        </div>
+        <%for(let i=0;i<S11.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S11.rows[i].FN%>"><%=S11.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S11.rows[i].MT%></div>
+            <div class="TSIE"><%=S11.rows[i].BB%></div>
+            <div class="TSIE"><%=S11.rows[i].RC%></div>
+            <div class="TSIE"><%=S11.rows[i].WKT%></div>
+            <div class="TSIE"><%=S11.rows[i].FIFER%></div>
+        </div><%}%>
+    </div>
+
+
+
+    <div class="TS_info" id="H12">
+        <div class="TSI">
+            <div class="TSIH N">BOWLER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">BALLS </div>
+            <div class="TSIH">INN </div>
+            <div class="TSIH">WKTS </div>
+            <div class="TSIH">ECO </div>
+            <div class="TSIH">AVG </div>
+            <div class="TSIH">SR </div>
+        </div>
+        <%for(let i=0;i<S12.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S12.rows[i].FN%>"><%=S12.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S12.rows[i].MT%></div>
+            <div class="TSIE"><%=S12.rows[i].BB%></div>
+            <div class="TSIE"><%=S12.rows[i].INN%></div>
+            <div class="TSIE"><%=S12.rows[i].WKT%></div>
+            <div class="TSIE"><%=Math.round(S12.rows[i].ECO*100)/100%></div>
+            <div class="TSIE"><%=Math.round(S12.rows[i].AVG*100)/100%></div>
+            <div class="TSIE"><%=Math.round(S12.rows[i].SR*100)/100%></div>
+
+        </div><%}%>
+    </div>
+
+    <div class="TS_info" id="H13">
+        <div class="TSI">
+            <div class="TSIH N">BOWLER </div>
+            <div class="TSIH">MATCHES </div>
+            <div class="TSIH">BALLS </div>
+            <div class="TSIH">WKTS </div>
+            <div class="TSIH">SR </div>
+        </div>
+        <%for(let i=0;i<S13.rows.length;i++){%>
+
+        <div class="TSI">
+            <div class="TSIE N"><a href="/Players/<%=S13.rows[i].FN%>"><%=S13.rows[i].FN%></a></div>
+            <div class="TSIE"><%=S13.rows[i].MT%></div>
+            <div class="TSIE"><%=S13.rows[i].BB%></div>
+            <div class="TSIE"><%=S13.rows[i].WKT%></div>
+            <div class="TSIE"><%=Math.round(S13.rows[i].SR*100)/100%></div>
+
+        </div><%}%>
+    </div>
+
+
+
+</div>
+
+
+<script>
+
+    var btnx = document.getElementsByClassName("Minfo");
+    var infox=document.getElementsByClassName("TS_info");
+    for (var i = 0; i < btnx.length; i++) {
+        btnx[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active1");
+            var c2=document.getElementsByClassName("vis1");
+            current[0].className = current[0].className.replace(" active1", "");
+            c2[0].className=c2[0].className.replace(" vis1", "");
+            this.className += " active1";
+
+            document.getElementById("H"+this.id.substring(1,3)).className += " vis1";
+        });
+    }
+</script>

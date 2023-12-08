@@ -1,0 +1,261 @@
+<!doctype html>
+<style>
+
+    .Wrapper{
+        background-color: #e5e5e5;
+    }
+    
+    .Player_card{
+        margin-top: 0.3%;
+        margin-right: 15%;
+        margin-left: 15%;
+        /*padding-top: 0.3%;*/
+        /*padding-right: 15%;*/
+        /*padding-left: 15%;*/
+
+
+        
+        background-color: white;
+        /*width: 70%;*/
+        /*alignment: center;*/
+        border: 3px  solid #e5e5e5;
+
+    }
+
+    .Player_Header img{
+        border-radius: 5%;
+    }
+
+    .Player_Header{
+        display: flex;
+        padding: 0.5%;
+    }
+    .PHDetails{
+        padding-left: 2%;
+        padding-top: 5%;
+    }
+
+    .Personal_info{
+        padding: 0.5%;
+        background-color: #efefed;
+        max-width: 35%;
+        min-width: 35%;
+    }
+    .PI1{
+        display: flex;
+    }
+    .PIH{
+        width: 40%;
+    }
+
+    .PII{
+        width: 60%;
+    }
+
+    .Total_info{
+        display: flex;
+    }
+
+    .Career_wrapper{
+        padding: 1%;
+        width: 70%;
+        overflow: hidden;
+    }
+    .Career_summary{
+        width: 100%;
+    }
+    .CS_Header{
+        /*background-color: #dcdcdc;*/
+        display: flex;
+
+    }
+
+    .CSH_Elem{
+        min-width: 8%;
+        padding: 1%;
+        background-color: #dcdcdc;
+        text-align: center;
+
+    }
+
+    .CSH_Elem1{
+        min-width: 8%;
+        padding: 1%;
+        text-align: center;
+    }
+
+</style>
+
+<%
+CheckNULL = function (x)
+{
+    // console.log('Hello ');
+    if(x==null)return '--';
+    else return x;
+}
+%>
+<%var Pimg='pic.jpg'%>
+<html>
+<head>
+    <%-include('../Partials/Homehead');%>
+</head>
+<body>
+<header>
+    <%-include('../Partials/header');%>
+</header>
+<div class="Wrapper">
+<div class="Player_card">
+    <div class="Player_Header">
+    <img src="<%=dbplayerinfo.rows[0].IMG%>" class="img img-responsive">
+        <div class="PHDetails">
+            <H2><b><%=dbplayerinfo.rows[0].FN%></b></H2>
+            <P><%=dbplayerinfo.rows[0].CN%></P>
+        </div>
+    </div>
+    <div class="Total_info">
+    <div class="Personal_info">
+        <p><b>Personal Information</b></p>
+        <div class="PI1">
+            <div class="PIH"><b>Born</b></div>
+            <div class="PII"><%=dbplayerinfo.rows[0].DOB%> (<%=dbplayerinfo.rows[0].AGE%> Years)</div>
+        </div>
+        <div class="PI1">
+            <div class="PIH"><b>Height</b></div>
+            <div class="PII"><%=Math.round(dbplayerinfo.rows[0].HEIGHT*100)/100%></div>
+        </div>
+        <div class="PI1">
+            <div class="PIH"><b>Role</b></div>
+            <div class="PII"><%=dbplayerinfo.rows[0].Role%></div>
+        </div>
+        <div class="PI1">
+            <div class="PIH"><b>Batting Style</b></div>
+            <div class="PII"><%=CheckNULL(dbplayerinfo.rows[0].BATH)%> Handed , <%=CheckNULL(dbplayerinfo.rows[0].BATS)%></div>
+        </div>
+        <div class="PI1">
+            <div class="PIH"><b>Bowling Style</b></div>
+            <div class="PII"><%=CheckNULL(dbplayerinfo.rows[0].BOWLH)%> Handed , <%=CheckNULL(dbplayerinfo.rows[0].BOWLS)%></div>
+        </div>
+        <P></P>
+        <p><b>ICC ODI Rankings</b></p>
+        <div class="PI1">
+            <div class="PIH"><b>Batting</b></div>
+            <div class="PII"><%=CheckNULL(dbplayerinfo.rows[0].BATR)%></div>
+        </div>
+        <div class="PI1">
+            <div class="PIH"><b>Bowling</b></div>
+            <div class="PII"><%=CheckNULL(dbplayerinfo.rows[0].BOWLR)%></div>
+        </div>
+
+
+    </div>
+        <div class="Career_wrapper">
+        <div class="Career_summary">
+            <p><B>Batting Career Summary</B></p>
+            <div class="CS_Header">
+                <div class="CSH_Elem"></div>
+                <div class="CSH_Elem">M</div>
+                <div class="CSH_Elem">Inn</div>
+                <div class="CSH_Elem">NO</div>
+                <div class="CSH_Elem">Runs</div>
+                <div class="CSH_Elem">HS</div>
+                <div class="CSH_Elem">Avg</div>
+                <div class="CSH_Elem">BF</div>
+                <div class="CSH_Elem">SR</div>
+                <div class="CSH_Elem">100</div>
+                <div class="CSH_Elem">50</div>
+                <div class="CSH_Elem">4s</div>
+                <div class="CSH_Elem">6s</div>
+            </div>
+            <%if(BatCS.rows.length){%>
+            <div class="CS_Header">
+                <div class="CSH_Elem1">ODI</div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].MN)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].INN)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].NO)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].RUN)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].HS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(Math.round(BatCS.rows[0].AVG*100)/100)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].BF)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(Math.round(BatCS.rows[0].SR*100)/100)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].HUNDREDS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].FIFTIES)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].FOURS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BatCS.rows[0].SIXES)%></div>
+            </div>
+
+        <%}else{%>
+            <div class="CS_Header">
+                <div class="CSH_Elem1">ODI</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+                <div class="CSH_Elem1">--</div>
+            </div>
+
+            <%}%>
+
+
+        </div>
+        <p></p>
+        <div class="Career_summary">
+            <p><B>Bowling Career Summary</B></p>
+            <div class="CS_Header">
+                <div class="CSH_Elem"></div>
+                <div class="CSH_Elem">M</div>
+                <div class="CSH_Elem">Inn</div>
+                <div class="CSH_Elem">B</div>
+                <div class="CSH_Elem">Runs</div>
+                <div class="CSH_Elem">Wkts</div>
+                <div class="CSH_Elem">MDN</div>
+                <div class="CSH_Elem">Econ</div>
+                <div class="CSH_Elem">Avg</div>
+                <div class="CSH_Elem">SR</div>
+                <div class="CSH_Elem">5W</div>
+
+            </div>
+            <%if(BowlCS.rows.length){%>
+            <div class="CS_Header">
+                <div class="CSH_Elem1">ODI</div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].M)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].INN)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].BALLS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].RUNS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].WICKETS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].MAIDENS)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(Math.round(BowlCS.rows[0].ECO*100)/100)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(Math.round(BowlCS.rows[0].AVG*100)/100)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(Math.round(BowlCS.rows[0].SR*100)/100)%></div>
+                <div class="CSH_Elem1"><%=CheckNULL(BowlCS.rows[0].FIVE_WICKETS)%></div>
+
+            </div>
+            <%}else{%>
+                <div class="CS_Header">
+                    <div class="CSH_Elem1">ODI</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                    <div class="CSH_Elem1">--</div>
+                </div>
+            <%}%>
+        </div>
+
+    </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

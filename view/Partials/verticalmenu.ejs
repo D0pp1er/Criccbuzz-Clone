@@ -1,0 +1,52 @@
+<style>
+    .vertical-menu {
+        width: 100%; /* Set a width if you like */
+    }
+
+    .vertical-menu a {
+        background-color: #eee; /* Grey background color */
+        color: black; /* Black text color */
+        display: block; /* Make the links appear below each other */
+        padding: 12px; /* Add some padding */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    .vertical-menu a:hover {
+        background-color: #ccc; /* Dark grey background on mouse-over */
+    }
+
+    .vertical-menu a.active {
+        background-color: #04AA6D; /* Add a green color to the "active/current" link */
+        color: white;
+    }
+
+</style>
+<script>
+    function getteam(e)
+    {
+        console.log(e.id);
+
+    }
+</script>
+<div class="vertical-menu" >
+    <a href="#" class="active" id="keyseries"><%=title%></a>
+
+    <%for(const t of temp){%>
+
+            <%var x=[] ;x[0]=t;x[1]=title;%>
+            <a  onclick="getteam(this)" id="<%=t%>" href="/<%=title%>/<%=t%>">> <%=t%></a>
+
+    <%}%>
+
+
+
+<!--    <a href="#">>  Sri Lanka vs Pakistan</a>-->
+<!--    <a href="#">>  Ireland Tri-Nation(W)</a>-->
+<!--    <a href="#">>  West Indies vs India</a>-->
+<!--    <a href="#">>  Zimbabwe vs Bangladesh</a>-->
+<!--    <a href="#">>  Scotland vs New Zealand</a>-->
+<!--    <a href="#">>  County Div 1</a>-->
+<!--    <a href="#">>  World Test Championship</a>-->
+<!--    <a href="#">>  Women's Championship</a>-->
+
+</div>

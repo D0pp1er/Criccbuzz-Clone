@@ -1,0 +1,136 @@
+<style>
+    .PTheader{
+        display:flex;
+        /*float: left;*/
+    }
+    .profile-card-10 {
+        border-radius: 5px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+        padding: 0px 12px;
+        /*background-color: #1f2124;*/
+        background-color: #e8ffed;
+        color: #EEE;
+        align-content: center;
+        width: 160px;
+        max-height: 5%;
+        float: left;
+    }
+
+    .profile-card-10 img {
+        margin-top:  10px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 130px;
+        max-height: 130px;
+        border-radius: 50%;
+        border: 7px solid transparent;
+        box-shadow: 0px 0px 0px 2px #64c17b;
+        transition: all 0.25s linear;
+        display: block;
+
+    }
+
+    .profile-card-10 .profile-name {
+        color: rgba(1, 26, 9, 0.97);
+        font-weight: bold;
+        font-size: 17px;
+        text-align: center;
+    }
+
+
+    .profile-card-10:hover img {
+        transform: scale(1.1);
+    }
+    .profile-name a{
+        text-decoration: none;
+        color:rgba(1, 26, 9, 0.97) ;
+        transition: 0.4s;
+    }
+
+    .profile-name a:hover{
+        color: #3da4de;
+    }
+
+    .Error_Message{
+        text-align: center;
+        padding: 20%;
+        color: #fc6363;
+    }
+</style>
+<%
+CheckNULL = function (x)
+{
+    // console.log('Hello ');
+    if(x==null)return '--';
+    else return x;
+}
+%>
+<%var Pnumber=playerList.length%>
+<%var Pname='Faf Du Plesis'%>
+<%var Pimg='pic.jpg'%>
+
+<%for(let i=0;i<Pnumber;){%>
+<div class="PTheader">
+    <%for(let j=0;j<6;j++,i++){%>
+    <%if(i==Pnumber)break;%>
+        <div class="profile-card-10"><img src="<%=playerPic[i]%>" class="img img-responsive">
+            <div class="profile-name"><a href="/Players/<%=playerList[i]%>"><%=playerList[i]%></a> </div>
+        </div>
+    <%}%>
+</div>
+<%}%>
+
+<%if(Pnumber==0){%>
+    <div class="Error_Message"><h2>Sorry, No Players Available</h2></div>
+<%}%>
+
+
+
+<!--<div class="PTheader">-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<div class="PTheader">-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+<!--    <div class="profile-card-10"><img src="/img/pic.jpg" class="img img-responsive">-->
+<!--        <div class="profile-name">JOHN DOE</div>-->
+<!--    </div>-->
+
+<!--</div>-->

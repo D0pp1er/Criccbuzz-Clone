@@ -1,0 +1,123 @@
+<style>
+.Header,.Details_bar{
+    margin: 0.3% 15%;
+    background-color: #eaf5ea;
+    padding: 0.5%;
+}
+.Menubar{
+    display: flex;
+    font-size: 20px;
+}
+
+.Menu_elem{
+    min-width: 9%;
+    padding-right: 3%;
+    cursor: pointer;
+    /*background-color: red;*/
+}
+
+.active{
+    color: #009270;
+    text-decoration: underline;
+}
+
+.Tinfo{
+    display: none;
+
+}
+
+.vis{
+    display: block;
+    overflow: hidden;
+}
+</style>
+<%
+CheckNULL = function (x)
+{
+    // console.log('Hello ');
+    if(x==null)return '--';
+    else return x;
+}
+%>
+<div class="Header">
+    <h2><b><%=temp%> National Cricket Team</b></h2>
+    <div class="Menubar">
+        <div id="b1" class="Menu_elem active">Home</div>
+        <div id="b2" class="Menu_elem">Schedule</div>
+        <div id="b3" class="Menu_elem">Result</div>
+        <div id="b4" class="Menu_elem">Stats</div>
+        <div id="b5" class="Menu_elem">Players</div>
+    </div>
+</div>
+
+<div class="Details_bar">
+    <div class="Tinfo vis" id="i1">
+        <div id="donutchart" style="width: 100%; height: 480px ;color:#eaf5ea; align-items: center"></div>
+        <div></div>
+    </div>
+
+    <div class="Tinfo" id="i2">
+        <%-include('../Partials/ScheduledScores');%>
+    </div>
+
+    <div class="Tinfo" id="i3">
+        <%-include('../Partials/HomeScores');%>
+<!--        -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Implement live scores-->
+    </div>
+
+    <div class="Tinfo" id="i4">
+        <%-include('TeamStat');%>
+
+    </div>
+
+    <div class="Tinfo" id="i5">
+        <%-include('TeamPlayerList');%>
+    </div>
+
+
+</div>
+
+<script>
+
+    var btns = document.getElementsByClassName("Menu_elem");
+    var infos=document.getElementsByClassName("Tinfo");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            var c2=document.getElementsByClassName("vis");
+            current[0].className = current[0].className.replace(" active", "");
+            c2[0].className=c2[0].className.replace(" vis", "");
+            this.className += " active";
+
+            document.getElementById("i"+this.id.substring(1,2)).className += " vis";
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Results', 'MatchNumbers'],
+            ['Won',     <%=TeamStat[0]%>],
+            ['Lost',      <%=TeamStat[1]%>],
+            ['Draw',  <%=TeamStat[2]%>],
+            ['No Result', <%=TeamStat[3]%>],
+
+        ]);
+
+        var options = {
+            title: '<%=temp%>'+'\'s ODI Statistics',
+            pieHole: 0.5,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+</script>
+
+
